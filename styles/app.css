@@ -103,10 +103,13 @@ button {
 
 .movie-container {
   cursor: pointer;
+  width: 200px;
 }
 
 .movie-img {
   border-radius: 8px;
+  /* width: 200px; */
+  height: 300px;
 }
 
 .categoriesPreview-list, .categories-list {
@@ -270,7 +273,7 @@ button {
 }
 
 .genericList-container .movie-img {
-  width: 100%;
+  width: 50%;
 }
 
 
