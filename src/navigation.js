@@ -1,20 +1,22 @@
-searchFormBtn.addEventListener('click', () => {
-  location.hash = '#search=' + searchFormInput.value;
-});
+  searchFormBtn.addEventListener('click', () => {
+    location.hash = '#search=' + searchFormInput.value;
+  });
 
-trendingBtn.addEventListener('click', () => {
-  location.hash = '#trends';
-});
+  trendingBtn.addEventListener('click', () => {
+    location.hash = '#trends';
+  });
 
-arrowBtn.addEventListener('click', () => {
-  history.back();
-  // location.hash = '#home';
-});
+  arrowBtn.addEventListener('click', () => {
+    history.back();
+    location.hash = '#home';
+  });
 
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 
+
 function navigator() {
+  console.log("aqui esta el location");
   console.log({ location });
   
   if (location.hash.startsWith('#trends')) {

@@ -1,12 +1,3 @@
-// const api = axios.create({
-//   baseURL: 'https://api.themoviedb.org/3/',
-//   headers: {
-//     'Content-Type': 'application/json;charset=utf-8',
-//   },
-//   params: {
-//     'api_key': API_KEY,
-//   },
-// });
 
 
 // // Utils
@@ -133,13 +124,25 @@
 
 
 //eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NjA4MmE3ZjAxNmNkMGViYTJkZmUwMDA5ZDZlYmIzMiIsInN1YiI6IjY1MWMxMzAzYzUwYWQyMDE0ZGNmMmVlNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CvhFcwAYniLFyPiMKzsZXIr9OoNbOtXlHAbZL11uqXU
+const API_KEY = "76082a7f016cd0eba2dfe0009d6ebb32"
+
+const api = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+  },
+  params: {
+    'api_key': API_KEY,
+  },
+});
 
 
-const api_key = "76082a7f016cd0eba2dfe0009d6ebb32"
+
 
 async function getTrendingMoviesPreview(){
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`)
-    const data = await res.json();
+    // const res = await api(`trending/movie/day`)
+    // const data = await res.json();
+    const {data} = await api(`trending/movie/day`)
     
     const movies = data.results;
     // console.log({data,movies})
@@ -169,8 +172,10 @@ getTrendingMoviesPreview()
 
 async function getMovieCategories() {
   try {
-    const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`);
-    const data = await res.json();
+    // const res = await fetch(`genre/movie/list?api_key=${API_KEY}`);
+    // const data = await res.json();
+
+    const {data} = await api(`genre/movie/list`)
 
     const categories = data.genres;
 
@@ -182,6 +187,8 @@ async function getMovieCategories() {
 
       const categoryTitle = document.createElement('h3');
       categoryTitle.classList.add('category-title');
+      categoryTitle.addEventListener('click',()=>{
+      })
       categoryTitle.textContent = category.name;
 
       categoryContainer.appendChild(categoryTitle);
